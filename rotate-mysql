@@ -1,0 +1,8 @@
+/var/backups/mysql/*.dump {
+        rotate 5
+        hourly
+        missingok
+        nocompress
+        dateext
+        dateformat .%s.%Y-%m-%d.bz2
+       }
