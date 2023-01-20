@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  mysqlbackup:
+    image: "mysqlbackup"
+    stdin_open: true
+    tty: true
+    build: 
+      context: ./mysql-backup
+    container_name: mysql-backup
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT}
+      CRON_TIME: ${CRON_TIME}
+   # restart: unless-stopped
+    volumes:
+      - dumps:/var/backups/mysql:rw
+
+volumes:
+  dumps:
+     driver: local
+     driver_opts:
+        type: none
+        o: bind
+        device: ${PWD}/dumps
+
+    
