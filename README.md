@@ -1,6 +1,10 @@
 # mysqlbackup
 Image for regular MySQL / MariaDB backup
 
+# prerequisites
+
+create directory "dumps" in root folder of this repo
+
 # TODO 
 * [X] ~~*1) dockerfile - debian:bullseye-slim based - mariadb client, cron, dumb-init*~~ [2023-01-20]
   * [X] ~~*1.1) use env variable for cron time to set automatic dump*~~ [2023-01-20]
