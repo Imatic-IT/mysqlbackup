@@ -24,6 +24,6 @@ volumes:
      driver_opts:
         type: none
         o: bind
-        device: ${PWD}/dumps
+        device: ${PWD}/${DUMP_PATH}
 
     
