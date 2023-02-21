@@ -2,16 +2,12 @@ FROM debian:bullseye-slim
 
 ENV TZ="Europe/Prague"
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y wget curl logrotate cron dumb-init bzip2 tzdata
+RUN apt-get update && apt-get full-upgrade -y && apt-get install -y curl logrotate cron dumb-init bzip2 tzdata
 
-RUN wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup && \
-    echo "367a80b01083c34899958cdd62525104a3de6069161d309039e84048d89ee98b mariadb_repo_setup" \
-    | sha256sum -c - && \
+RUN curl -LsS -O https://downloads.mariadb.com/MariaDB/mariadb_repo_setup && \
     chmod +x mariadb_repo_setup && \
-    ./mariadb_repo_setup \
-   --mariadb-server-version="mariadb-10.6"
-
-RUN apt-get update && apt-get install -y mariadb-client && \
+    bash mariadb_repo_setup --mariadb-server-version=10.9 && \
+    apt-get update && apt-get install -y mariadb-client && \
     mkdir -p /var/backups/mysql
 
 COPY ./entrypoint.sh /
