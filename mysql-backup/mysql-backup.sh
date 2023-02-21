@@ -69,7 +69,7 @@ databases=$(mysql $mysql_conn_string -e "SHOW DATABASES;" | tr -d "| " | egrep -
 #dump each database
 for db in $databases; do
         currentDump="$outputdir/$db.$extension"
-        mysqldump $mysql_conn_string --force --single-transaction --skip-lock-tables --databases $db | bzip2 -z > "$currentDump"
+        mysqldump $mysql_conn_string --force --single-transaction --skip-lock-tables --max-allowed-packet=64M --databases $db | bzip2 -z > "$currentDump"
         lastDump=$(ls $outputdir/$db*.bz2 2>/dev/null | head -1)
         dedupe "$currentDump" "$lastDump"
 done
