@@ -9,11 +9,11 @@ services:
       context: ./mysql-backup
     container_name: mysql-backup
     environment:
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_PORT: ${MYSQL_PORT}
-      CRON_TIME: ${CRON_TIME}
+      MYSQL_USER: ${MYSQL_USER:-root}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-}
+      MYSQL_HOST: ${MYSQL_HOST:-}
+      MYSQL_PORT: ${MYSQL_PORT:-3306}
+      CRON_TIME: ${CRON_TIME:-30 03 * * *}
    # restart: unless-stopped
     volumes:
       - dumps:/var/backups/mysql:rw
@@ -24,6 +24,6 @@ volumes:
      driver_opts:
         type: none
         o: bind
-        device: ${PWD}/${DUMP_PATH}
+        device: ${PWD}/${DUMP_PATH:-backups}
 
     

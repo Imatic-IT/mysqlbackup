@@ -2,6 +2,9 @@ version: "3"
 
 services:
   mysqlbackup:
+    environment:
+      MYSQL_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_HOST: db
     networks:
       - database-network
 
