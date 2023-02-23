@@ -13,11 +13,9 @@ or
 You need to setup shared network that is running SQL database. Mysqlbackup docker instance will connect to this network and than SQL server is available without exposing its port (more secure way). You can also use (symlink) your existing .env so for example SQL root password is defined only once.
 
 ### Dockerized SQL server part
-In your dockerized project you need to define
- MYSQL_DOCKER_NETWORK=somenename
-in your ```.env``` and modify ```docker-compose.yml``` so that SQL server instance and all services accessing SQL are in the same network. You can observe test/docker-compose.yml how to define network and access it from services (see yaml section "networks" in services section and in top level section). You don't need to modify lines from the example, just use it in your docker-compose.yml.  
-You can also set MYSQLBACKUP_CRON_TIME to set non-default backup time.
-After restart (docker compose down/up) your project sould be ready for backup using this project.
+In your dockerized project you need to define ```MYSQL_DOCKER_NETWORK=somenename``` in your ```.env``` and modify ```docker-compose.yml``` so that SQL server instance and all services accessing SQL are in the same network. You can observe test/docker-compose.yml how to define network and access it from services (see yaml section "networks" in services section and in top level section). You don't need to modify lines from the example, just use it in your docker-compose.yml.  
+You can also set MYSQLBACKUP_CRON_TIME to set non-default backup time.  
+After restart (docker compose down/up) your project should be ready for backup using this mysqlbackup project.
 
 ### MYSQLBACKUP setup
 When you have your project ready, you can setup your backup. You need to copy docker-compose.override.yml.tpl to docker-compose.override.yml so you can connect to external SQL server network.
