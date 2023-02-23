@@ -11,7 +11,7 @@ services:
     environment:
       MYSQL_USER: ${MYSQL_USER:-root}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD:-}
-      MYSQL_HOST: ${MYSQL_HOST:-}
+      MYSQL_HOST: ${MYSQL_HOST:-127.0.0.1}
       MYSQL_PORT: ${MYSQL_PORT:-3306}
       CRON_TIME: ${CRON_TIME:-30 03 * * *}
    # restart: unless-stopped
