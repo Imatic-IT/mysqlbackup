@@ -13,7 +13,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD:-}
       MYSQL_HOST: ${MYSQL_HOST:-127.0.0.1}
       MYSQL_PORT: ${MYSQL_PORT:-3306}
-      CRON_TIME: ${CRON_TIME:-30 03 * * *}
+      CRON_TIME: ${MYSQLBACKUP_CRON_TIME:-30 03 * * *}
    # restart: unless-stopped
     volumes:
       - dumps:/var/backups/mysql:rw
@@ -25,5 +25,3 @@ volumes:
         type: none
         o: bind
         device: ${PWD}/${DUMP_PATH:-backups}
-
-    
