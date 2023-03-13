@@ -73,3 +73,9 @@ for db in $databases; do
         lastDump=$(ls $outputdir/$db*.bz2 2>/dev/null | head -1)
         dedupe "$currentDump" "$lastDump"
 done
+
+# send a message to rocketchat
+curl -sS -H 'Content-Type: application/json' -d '"$RC_DATA"' - status OK" }' "$RC_URL"
+
+# send a check result to icinga
+curl -k -sS -u "$IC_CREDENTIALS" -H 'Accept: application/json' -X POST '"$IC_URL"' -d '"$IC_DATA"'
