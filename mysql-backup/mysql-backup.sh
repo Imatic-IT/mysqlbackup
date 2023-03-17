@@ -1,13 +1,7 @@
 #!/bin/bash
 
-mysql_host=${MYSQL_HOST:-"127.0.0.1"}
-mysql_user=${MYSQL_USER:-"root"}
-mysql_password=${MYSQL_PASSWORD:-"root"}
-mysql_port=${MYSQL_PORT:-3306}
-
-mysql_conn_string="-h $mysql_host -u $mysql_user -p$mysql_password -P $mysql_port"
+mysql_conn_string="-h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD -P $MYSQL_PORT"
 outputdir="/var/backups/mysql"
-
 extension="dump"
 removeduplicate=1
 
