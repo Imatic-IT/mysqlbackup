@@ -14,6 +14,11 @@ services:
       MYSQL_HOST: ${MYSQL_HOST:-127.0.0.1}
       MYSQL_PORT: ${MYSQL_PORT:-3306}
       CRON_TIME: ${MYSQLBACKUP_CRON_TIME:-30 03 * * *}
+      RC_URL: ${RC_URL:-}
+      RC_DATA: ${RC_DATA:-}
+      IC_CREDENTIALS: ${IC_CREDENTIALS:-}
+      IC_URL: ${IC_URL:-}
+      IC_DATA: ${IC_DATA:-}
    # restart: unless-stopped
     volumes:
       - dumps:/var/backups/mysql:rw
