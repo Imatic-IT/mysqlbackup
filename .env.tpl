@@ -12,3 +12,13 @@ MYSQL_HOST=
 # Name of external docker network used in docker-compose.override.yml so you can connect to external network
 # see test/docker-compose.yml for example creating external network
 MYSQL_DOCKER_NETWORK=mysqlnetwork
+# RocketChat URL
+RC_URL="https://chat.example.com/hooks/e9bbde8000744596a60a2ef2d8c96012"
+# RocketChat message
+RC_DATA="{ "text": "MySQL backup OK" }"
+# Icinga2 credentials (user:password)
+IC_CREDENTIALS="apiuser:apipassword"
+# Icinga2 URL
+IC_URL="https://monitoring.example.com:5665/v1/actions/process-check-result"
+# Icinga2 payload (see https://icinga.com/docs/icinga-2/latest/doc/08-advanced-topics/#external-check-results) 
+IC_DATA="{ "type": "Service", "filter": "host.name==\"example-backup-checks\" && service.name==\"example-backup\"", "exit_status": 0, "plugin_output": "MySQL backup OK", "ttl": "87000"}"
