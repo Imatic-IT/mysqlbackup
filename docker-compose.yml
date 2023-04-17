@@ -19,10 +19,12 @@ services:
       IC_CREDENTIALS: ${IC_CREDENTIALS:-}
       IC_URL: ${IC_URL:-}
       IC_DATA: ${IC_DATA:-}
-   # restart: unless-stopped
+      MYSQL_HOST: db
+    restart: unless-stopped
     volumes:
       - dumps:/var/backups/mysql:rw
-
+    networks:
+      - database-network
 volumes:
   dumps:
      driver: local
@@ -30,3 +32,8 @@ volumes:
         type: none
         o: bind
         device: ${PWD}/${DUMP_PATH:-backups}
+
+networks:
+    database-network:
+      name: $MYSQL_DOCKER_NETWORK
+      external: true
