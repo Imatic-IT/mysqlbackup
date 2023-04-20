@@ -69,11 +69,11 @@ for db in $databases; do
 done
 
 # send a message to rocketchat (only if the URL is set)
-if [ -z "$RC_URL" ]; then
-  curl -sS -H ''Content-Type: application/json' -d '"$RC_DATA"' - status OK" }' "$RC_URL"
+if [ -n "$RC_URL" ]; then
+  curl -sS -H ''Content-Type: application/json' -d "$RC_DATA" - status OK" }' "$RC_URL"
 fi
 
 # send a check result to icinga (only if the URL is set)
-if [ -z "$IC_URL" ]; then
-  curl -k -sS -u "$IC_CREDENTIALS" -H 'Accept: application/json' -X POST '"$IC_URL"' -d '"$IC_DATA"'
+if [ -n "$IC_URL" ]; then
+  curl -k -sS -u "$IC_CREDENTIALS" -H 'Accept: application/json' -X POST "$IC_URL" -d "$IC_DATA"
 fi
