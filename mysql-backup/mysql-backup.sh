@@ -70,7 +70,7 @@ done
 
 # send a message to rocketchat (only if the URL is set)
 if [ -n "$RC_URL" ]; then
-  curl -sS -H ''Content-Type: application/json' -d "$RC_DATA" - status OK" }' "$RC_URL"
+  curl -sS -H 'Content-Type: application/json' -d "$RC_DATA" "$RC_URL"
 fi
 
 # send a check result to icinga (only if the URL is set)
