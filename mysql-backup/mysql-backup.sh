@@ -69,8 +69,9 @@ for db in $databases; do
 done
 
 # send a message to rocketchat (only if the URL is set)
+RC_DATA2=$(eval echo "$RC_DATA")
 if [ -n "$RC_URL" ]; then
-  curl -sS -H 'Content-Type: application/json' -d "$RC_DATA" "$RC_URL"
+  curl -sS -H 'Content-Type: application/json' -d "$RC_DATA2" "$RC_URL"
 fi
 
 # send a check result to icinga (only if the URL is set)
